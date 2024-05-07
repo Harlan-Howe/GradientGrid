@@ -7,9 +7,12 @@ public class GradientGridFrame extends JFrame implements ActionListener
 {
     private GradientGridPanel mainPanel;
 
-    private String[] modeNames = {"Mode 0", "Mode 1", "Mode 2"}; // TODO: pick better names than this.
+    // TODO: pick better (and more?) names than this.
+    private String[] modeNames = {"Default", "Bad Example", "Mode 2", "Mode 3", "Mode 4"};
+
     private JComboBox modePopup;
     private JLabel stateLabel;
+
 
     public GradientGridFrame()
     {
@@ -18,17 +21,24 @@ public class GradientGridFrame extends JFrame implements ActionListener
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(true);
         getContentPane().setLayout(new BorderLayout());
+        // add graphics panel in center
         mainPanel = new GradientGridPanel();
         getContentPane().add(mainPanel, BorderLayout.CENTER);
+        // add popup menu at top
         modePopup = new JComboBox(modeNames);
         getContentPane().add(modePopup, BorderLayout.NORTH);
         modePopup.addActionListener(this);
+        // add state label at bottom
         stateLabel = new JLabel();
         stateLabel.setHorizontalAlignment(JLabel.CENTER);
         getContentPane().add(stateLabel,BorderLayout.SOUTH);
         updateStateLabel();
     }
 
+    /**
+     * respond if the user has changed the selection in the popup menu (JComboBox)
+     * @param actEvt the event to be processed, describing what the user did.
+     */
     public void actionPerformed(ActionEvent actEvt)
     {
         if (actEvt.getSource() == modePopup)
@@ -39,6 +49,9 @@ public class GradientGridFrame extends JFrame implements ActionListener
         }
     }
 
+    /**
+     * update the state label, based on whether the main panel has met the criteria.
+     */
     public void updateStateLabel()
     {
         if (mainPanel.confirmGridMeetsSpecifications())
