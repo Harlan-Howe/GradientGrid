@@ -88,8 +88,8 @@ public class GradientGridPanel extends JPanel
     }
 
     /**
-     * checks that each cell (with one obvious exception) is adjacent (N, S, E, W, NE, SE, SW, NW) to a cell with
-     * the number below it, and every number 0-255 is used exactly once.
+     * checks that each cell is adjacent (N, S, E, W, NE, SE, SW, NW) to a cell with
+     * the number below it (unless the original cell holds zero), and every number 0-255 is used exactly once.
      * --> This should return true for the default case and return false for the bad examples. <--
      * @return whether all cells containing values 1-254 meet this requirement.
      */
@@ -145,6 +145,10 @@ public class GradientGridPanel extends JPanel
         }
     }
 
+    /**
+     * another example of a grid that shouldn't meet the grade... this one has the continuity (sort of), but it has a lot
+     * of duplicates. (The continuity passes, but there are a LOT of zeroes.)
+     */
     private void makeAnotherBadExample()
     {
         int counter = 0;
