@@ -3,7 +3,13 @@ import java.awt.*;
 
 public class GradientGridPanel extends JPanel
 {
-    private int[][] myGrid = {{  0,  1,  4,  5,  8,  9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29},
+    private int[][] myGrid;
+
+    final int GRID_SIZE = 16;
+    final int NUM_POSSIBLE_MODES = 4; // adjust this if you add to the list in the GradientGridFrame.
+
+    // a brute force way of setting the starter values of the grid. You should use loops for yours.
+    private int[][] starter = {{  0,  1,  4,  5,  8,  9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29},
                               {  2,  3,  6,  7, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31},
                               { 61, 60, 57, 56, 53, 52, 49, 48, 45, 44, 41, 40, 37, 36, 33, 32},
                               { 63, 62, 59, 58, 55, 54, 51, 50, 47, 46, 43, 42, 39, 38, 35, 34},
@@ -19,17 +25,24 @@ public class GradientGridPanel extends JPanel
                               {194,195,198,199,202,203,206,207,210,211,214,215,218,219,222,223},
                               {253,252,249,248,245,244,241,240,237,236,233,232,229,228,225,224},
                               {255,254,251,250,247,246,243,242,239,238,235,234,231,230,227,226}};
-    private int mode;
-    private Font mainFont;
+    private int mode; // which coloring scheme are we using?
+    private Font mainFont; // the font for the numbers in the boxes.
 
     public GradientGridPanel()
     {
         super();
+        myGrid = new int[GRID_SIZE][GRID_SIZE];
+        setMode(0);
     }
 
+    /**
+     * update which mode we are in, recalculate the values and refresh the screen. This method gets called at the start
+     * of the program, as well as any time the user changes the popup menu.
+     * @param m - the number of the new mode selected.
+     */
     public void setMode(int m)
     {
-        if (m>-1 && m<3)
+        if (m>-1 && m<NUM_POSSIBLE_MODES)
         {
             System.out.println("Setting mode to " + m + "." );
             mode = m;
@@ -37,55 +50,104 @@ public class GradientGridPanel extends JPanel
             repaint();
         }
         else
-            throw new RuntimeException("Set a mode that is out of bounds.");
+            throw new RuntimeException(STR."Set a mode that is out of bounds. Max value is currently \{NUM_POSSIBLE_MODES}. See line 8.");
     }
 
+    /**
+     * draws the grid, coloring and numbering the boxes based on the values in myGrid.
+     * @param g the <code>Graphics</code> object to draw with
+     */
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
         int squareSize = Math.min(getWidth(), getHeight())/16;
         mainFont = new Font("Garamond",Font.BOLD, squareSize/3);
         g.setFont(mainFont);
-        for (int r = 0; r < myGrid.length; r++)
-            for (int c = 0; c<myGrid[0].length; c++)
+        double numCells = Math.pow(GRID_SIZE, 2);
+        for (int r = 0; r < GRID_SIZE; r++)
+            for (int c = 0; c< GRID_SIZE; c++)
             {
-                g.setColor(Color.getHSBColor(myGrid[r][c]/256.0f, 1.0f, 1.0f));
+                // color in this box.
+                // Note: for "1.0f" the "f" means 1.0 as a float, rather than a double, since getHSBColor takes floats.
+                g.setColor(Color.getHSBColor((float)(myGrid[r][c]/numCells), 1.0f, 1.0f));
                 g.fillRect(c*squareSize, r*squareSize, squareSize, squareSize);
+                // draw outline of box
                 g.setColor(Color.GRAY);
                 g.drawRect(c*squareSize, r*squareSize, squareSize, squareSize);
+                // figure out where to draw the number
                 int numWidth = g.getFontMetrics().stringWidth(STR."\{myGrid[r][c]}");
+                int numX = (int)((c+0.5)*squareSize-numWidth/2);
+                int numY = (int)((r+0.5)*squareSize+squareSize/6);
+                // draw the number in dark gray over a light gray highlight, for contrast.
                 g.setColor(Color.LIGHT_GRAY);
-                g.drawString(""+myGrid[r][c], (int)((c+0.5)*squareSize-numWidth/2)+1,
-                        (int)((r+0.5)*squareSize+squareSize/6)+1);
+                g.drawString(""+myGrid[r][c], numX+1, numY+1);
                 g.setColor(Color.DARK_GRAY);
-                g.drawString(""+myGrid[r][c], (int)((c+0.5)*squareSize-numWidth/2),
-                        (int)((r+0.5)*squareSize+squareSize/6));
+                g.drawString(""+myGrid[r][c], numX, numY);
 
             }
     }
 
+    /**
+     * checks that each cell (with one obvious exception) is adjacent (N, S, E, W, NE, SE, SW, NW) to a cell with
+     * the number below it.
+     * --> This should return true for the default case and return false for the bad example. <--
+     * @return whether all cells containing values 1-254 meet this requirement.
+     */
+    public boolean confirmGridMeetsSpecifications()
+    {
+        //TODO: you write this method.
+        return false;
+    }
+
+    /**
+     * based on which mode is active, update the values stored in myGrid.
+     */
     public void recalculate()
     {
-        // TODO: you write this.
-        int counter = 0;
+
         switch(mode)
         {
             case 0:
-                for (int r = 0; r < 16; r++)
-                {
-                    for (int c=0; c<16; c++)
-                    {
-                        myGrid[r][c] = counter;
-                        counter++;
-                    }
-                }
+                copyFromStarter();
                 break;
+            case 1:
+                makeBadExample();
+                break;
+            case 2:
+                // TODO write code for case 2.
+                break;
+            case 3:
+                // TODO write code for case 3.
+                break;
+
         }
     }
 
-    public boolean confirmGridMeetsSpecifications()
-    {
-        return false;
+    /**
+     * an example of a loop structure that fills in all the cells but does not meet the criteria.
+     */
+    private void makeBadExample() {
+        int counter = 0;
+        for (int r = 0; r < GRID_SIZE; r++)
+        {
+            for (int c=0; c<GRID_SIZE; c++)
+            {
+                myGrid[r][c] = counter;
+                counter++;
+            }
+        }
     }
+
+    /**
+     * a brute-force example of a grid that does meet the criteria.
+     */
+    private void copyFromStarter() {
+        for (int r=0; r<GRID_SIZE; r++)
+            for (int c=0; c<GRID_SIZE; c++)
+                myGrid[r][c] = starter[r][c];
+        return;
+    }
+
+
 
 }
