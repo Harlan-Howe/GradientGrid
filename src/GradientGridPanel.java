@@ -6,7 +6,7 @@ public class GradientGridPanel extends JPanel
     private int[][] myGrid;
 
     final int GRID_SIZE = 16;
-    final int NUM_POSSIBLE_MODES = 4; // adjust this if you add to the list in the GradientGridFrame.
+    final int NUM_POSSIBLE_MODES = 5; // adjust this if you add to the list in the GradientGridFrame.
 
     // a brute force way of setting the starter values of the grid. You should use loops for yours.
     private int[][] starter = {{  0,  1,  4,  5,  8,  9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29},
@@ -90,7 +90,7 @@ public class GradientGridPanel extends JPanel
     /**
      * checks that each cell (with one obvious exception) is adjacent (N, S, E, W, NE, SE, SW, NW) to a cell with
      * the number below it, and every number 0-255 is used exactly once.
-     * --> This should return true for the default case and return false for the bad example. <--
+     * --> This should return true for the default case and return false for the bad examples. <--
      * @return whether all cells containing values 1-254 meet this requirement.
      */
     public boolean confirmGridMeetsSpecifications()
@@ -117,9 +117,12 @@ public class GradientGridPanel extends JPanel
                 makeBadExample();
                 break;
             case 2:
-                // TODO write code for case 2, either here or in its own method.
+                makeAnotherBadExample();
                 break;
             case 3:
+                // TODO write code for case 2, either here or in its own method.
+                break;
+            case 4:
                 // TODO write code for case 3, either here or in its own method.
                 break;
             // you may add more cases, if you wish!
@@ -129,13 +132,27 @@ public class GradientGridPanel extends JPanel
     /**
      * an example of a loop structure that fills in all the cells but does not meet the criteria.
      */
-    private void makeBadExample() {
+    private void makeBadExample()
+    {
         int counter = 0;
         for (int r = 0; r < GRID_SIZE; r++)
         {
             for (int c=0; c<GRID_SIZE; c++)
             {
                 myGrid[r][c] = counter;
+                counter++;
+            }
+        }
+    }
+
+    private void makeAnotherBadExample()
+    {
+        int counter = 0;
+        for (int r = 0; r < GRID_SIZE; r++)
+        {
+            for (int c=0; c<GRID_SIZE; c++)
+            {
+                myGrid[r][c] = counter % 15;
                 counter++;
             }
         }
