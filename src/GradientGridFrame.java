@@ -8,7 +8,7 @@ public class GradientGridFrame extends JFrame implements ActionListener
     private GradientGridPanel mainPanel;
 
     // TODO: pick better (and more?) names than this.
-    private String[] modeNames = {"Default", "Bad Example", "Mode 2", "Mode 3", "Mode 4"};
+    private String[] modeNames = {"Default", "Bad Example", "Mode 2", "Mode 3"};
 
     private JComboBox modePopup;
     private JLabel stateLabel;
