@@ -89,12 +89,15 @@ public class GradientGridPanel extends JPanel
 
     /**
      * checks that each cell (with one obvious exception) is adjacent (N, S, E, W, NE, SE, SW, NW) to a cell with
-     * the number below it.
+     * the number below it, and every number 0-255 is used exactly once.
      * --> This should return true for the default case and return false for the bad example. <--
      * @return whether all cells containing values 1-254 meet this requirement.
      */
     public boolean confirmGridMeetsSpecifications()
     {
+        // suggested variable to track whether you have duplicate numbers in the grid. This defaults to all falses.
+        boolean[] used = new boolean[GRID_SIZE * GRID_SIZE];
+
         //TODO: you write this method.
         return false;
     }
@@ -114,12 +117,12 @@ public class GradientGridPanel extends JPanel
                 makeBadExample();
                 break;
             case 2:
-                // TODO write code for case 2.
+                // TODO write code for case 2, either here or in its own method.
                 break;
             case 3:
-                // TODO write code for case 3.
+                // TODO write code for case 3, either here or in its own method.
                 break;
-
+            // you may add more cases, if you wish!
         }
     }
 
