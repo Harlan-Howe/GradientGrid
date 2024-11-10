@@ -1,6 +1,6 @@
 public class GradientGridRunner
 {
-    public static void main(String[] args)
+    public  void main()
     {
         GradientGridFrame app = new GradientGridFrame();
         app.setVisible(true);
