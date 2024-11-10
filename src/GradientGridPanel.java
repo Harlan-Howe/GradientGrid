@@ -95,7 +95,7 @@ public class GradientGridPanel extends JPanel
         switch(mode)
         {
             case 0:
-                copyFromStarter();
+                makeGoodExample();
                 break;
             case 1:
                 makeBadExample();
@@ -149,7 +149,7 @@ public class GradientGridPanel extends JPanel
     /**
      * a brute-force example of a grid that does meet the criteria.
      */
-    private void copyFromStarter() {
+    private void makeGoodExample() {
         // a brute force way of setting the starter values of the grid. You should use loops for yours.
         myGrid = new int[][]
                 {{  0,  1,  4,  5,  8,  9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29},
