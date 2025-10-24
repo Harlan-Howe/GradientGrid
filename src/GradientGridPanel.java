@@ -50,7 +50,8 @@ public class GradientGridPanel extends JPanel
             repaint();
         }
         else
-            throw new RuntimeException(STR."Set a mode that is out of bounds. Max value is currently \{NUM_POSSIBLE_MODES}. See line 8.");
+            throw new RuntimeException("Set a mode that is out of bounds. Max value is currently " +
+                    NUM_POSSIBLE_MODES + ". See line 8.");
     }
 
     /**
@@ -75,7 +76,7 @@ public class GradientGridPanel extends JPanel
                 g.setColor(Color.GRAY);
                 g.drawRect(c*squareSize, r*squareSize, squareSize, squareSize);
                 // figure out where to draw the number
-                int numWidth = g.getFontMetrics().stringWidth(STR."\{myGrid[r][c]}");
+                int numWidth = g.getFontMetrics().stringWidth(""+myGrid[r][c]);
                 int numX = (int)((c+0.5)*squareSize-numWidth/2);
                 int numY = (int)((r+0.5)*squareSize+squareSize/6);
                 // draw the number in dark gray over a light gray highlight, for contrast.
@@ -120,10 +121,10 @@ public class GradientGridPanel extends JPanel
                 makeAnotherBadExample();
                 break;
             case 3:
-                // TODO write code for case 2, either here or in its own method.
+                // TODO write code for case 3, either here or in its own method.
                 break;
             case 4:
-                // TODO write code for case 3, either here or in its own method.
+                // TODO write code for case 4, either here or in its own method.
                 break;
             // you may add more cases, if you wish!
         }
