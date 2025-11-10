@@ -28,7 +28,7 @@ public class GradientGridPanel extends JPanel
     {
         if (m>-1 && m<NUM_POSSIBLE_MODES)
         {
-            System.out.println(STR."Setting mode to \{m}.");
+            System.out.println("Setting mode to "+m+".");
             mode = m;
             recalculate();
             repaint();
