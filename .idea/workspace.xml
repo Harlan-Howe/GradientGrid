@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a23e66c-010e-40e6-b64b-1f45d21b353d" name="Changes" comment="Updated comments on anotherBadExample()">
+    <list default="true" id="4a23e66c-010e-40e6-b64b-1f45d21b353d" name="Changes" comment="Updated Java 22-&gt;25; fixed &quot;STR.&quot; back to concatenation.">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GradientGridPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GradientGridPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,14 +32,13 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Harlan-Howe/GradientGrid.git&quot;,
-    &quot;accountId&quot;: &quot;966e5558-72f5-45e8-a14c-701b5204a3d5&quot;
+    &quot;accountId&quot;: &quot;d1e1ce84-125d-42bc-a0bd-60c19ac44c03&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2g7l18VBsvomGbhuhwYcwUdA7pR" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -53,6 +52,9 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/harlan.howe/IdeaProjects/GradientGrid&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
@@ -135,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715110945995</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Updated Java 22-&gt;25; fixed &quot;STR.&quot; back to concatenation.">
+      <option name="closed" value="true" />
+      <created>1761336493721</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1761336493721</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -148,6 +158,7 @@
     <MESSAGE value="Renamed &quot;Default&quot; to &quot;Good Example&quot; in the popup menu." />
     <MESSAGE value="Added another negative example, this one to discourage duplicates." />
     <MESSAGE value="Updated comments on anotherBadExample()" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated comments on anotherBadExample()" />
+    <MESSAGE value="Updated Java 22-&gt;25; fixed &quot;STR.&quot; back to concatenation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Java 22-&gt;25; fixed &quot;STR.&quot; back to concatenation." />
   </component>
 </project>
