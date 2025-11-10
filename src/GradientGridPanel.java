@@ -106,9 +106,11 @@ public class GradientGridPanel extends JPanel
                 break;
             case 3:
                 // TODO write code for case 3, either here or in its own method.
+                System.out.println("Mode 3 not yet written."); // replace this line.
                 break;
             case 4:
                 // TODO write code for case 4, either here or in its own method.
+                System.out.println("Mode 4 not yet written."); // replace this line.
                 break;
             // you may add more cases, if you wish!
         }
